@@ -1,0 +1,69 @@
+﻿@model AddProductViewModel
+
+@{
+    ViewBag.Title = "Add a Product";
+    ViewBag.PageTitle = "Add a new Product";
+
+}
+
+
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+
+<h4 style="margin-top:5%;">@ViewBag.PageTitle</h4>
+<div class="float-left" style="margin-right:5%;">
+    <a asp-action="ProductList" asp-controller="Product" class="btn btn-primary">ProductList</a>
+</div>
+<br />
+<div style="margin-top:5%">
+    <form asp-action="AddProduct" asp-controller="Product" method="post" id="formId">
+
+        <label>
+            <input type="checkbox" class="filled-in" checked="checked" asp-for="Enabled" id="checkEnabledBoxId" />
+            <span>@nameof(Model.Enabled)</span>
+        </label>
+        <div class="container" id="containerId">
+            <input type="hidden" value="@Model.ProductId" id="pId" />
+            <div class="form-group row" id="productAndName">
+                <div class="col-sm">
+                    <label class="col-form-label" asp-for="ProductName"></label>
+                    <input class="form-control" type="text" asp-for="ProductName" />
+                </div>
+                <div class="col-sm">
+                    <label class="col-form-label-sm" asp-for="Quantity"></label>
+                    <input class="form-control" type="number" asp-for="Quantity" id="qtyNum" min="0" />
+                </div>
+            </div>
+            <div class="form-group row" id="price">
+                <div class="col-sm">
+                    <label class="col-form-label-sm" asp-for="Price"></label>
+                    <input class="form-control" type="number" asp-for="Price" id="productPriceId" />
+                </div>
+
+                <div class="col-sm" id="dropDownAndSel">
+                    @*"onchange="HideOrShowOrderID('dropDownCategories');"*@
+                    <label asp-for="Categories"></label>
+                    <select multiple class="drop-down-menu-contact" id="dropDownCategories" asp-for="Categories"
+                            asp-items="@(new SelectList(Model.Categories,"CategoryId","CategoryName"))">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row" id="SelectImages">
+                <div class="col-sm">
+                    <label class="custom-file-label">Elegir Archivo(s)...</label>
+                    <input class="form-control custom-file-input" asp-for="@Model.Photos" id="photoProduct_0" type="file" multiple />
+                </div>
+            </div>
+        </div>
+
+        <div class="float-right  form-group" style="margin-right:5%;">
+            <button class="btn btn-success" type="submit" id="submitBtn"> Submit</button>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script src="@Url.Content("~/js/SubmitProduct.js")"></script>
+}

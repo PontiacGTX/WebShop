@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>*@
+
+    <meta name="viewport" content="width=device-width" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web- @ViewBag.Title</title>
+    @*@ViewBag.Title</title>*@
+<environment include="Development">
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/css/bootstrap.css"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="/lib/materialize/css/materialize.css">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</environment>
+
+
+    <environment exclude="Development">
+        <script src="~/js/customscript.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    </environment>
+
+
+
+</head>
+<body>
+
+    <header>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a asp-action="" asp-controller="">one</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>
+        </ul>
+        <nav id="navBar" class="">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">WebShop</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+            <!-- <div class="nav-content">
+                 <ul class="tabs tabs-transparent">
+                   <li class="tab"><a href="#test1">Test 1</a></li>
+                   <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+                   <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+                   <li class="tab"><a href="#test4">Test 4</a></li>
+                 </ul>
+               </div>-->
+        </nav>
+    </header>
+
+    <script src="/lib/materialize/js/materialize.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.AutoInit();
+        });
+
+        $(document).ready(function () {
+            $(".dropdown-trigger").dropdown(
+                {
+                    'closeOnClick': true,
+                    'hover': true,
+                });
+            $('.dropdown-trigger-login').dropdown(
+                {
+                    'closeOnClick': true,
+                    'hover': true,
+                });
+
+        });
+    </script>
+
+
+    @*@{
+            TempData["UltimaAccion"] = ViewContext.RouteData.Values["Action"];
+            TempData["UltimoControlador"] = ViewContext.RouteData.Values["Controller"];
+            TempData["UltimaArea"] = ViewContext.RouteData.Values["Area"];
+
+        }*@
+
+
+    @RenderBody()
+
+   
+
+
+    @* <footer class="border-top footer text-muted" style="">
+            <div class="container">
+                &copy; 2021 - ClothingStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer> *@
+    <script>
+        $(".dropdown-trigger").dropdown();
+    </script>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - WebShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+

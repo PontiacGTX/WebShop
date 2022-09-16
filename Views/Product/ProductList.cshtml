@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<div class="container float-left">
+    <a asp-action="AddProduct" asp-controller="Product" class="btn btn-primary">Create</a>
+</div>
+<table class="responsive-table stripped">
+    <thead>
+        <tr>
+            <th>Product name</th>
+
+            <th>Price</th>
+
+            <th>Quantity</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="ProductDetails" asp-controller="Product" asp-route-ProductId="@item.ProductId">Info</a>
+
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="delete_@item.ProductId">Delete</a>
+                    <a class="btn btn-success" asp-action="EditProduct" asp-controller="Product" asp-route-ProductId="@item.ProductId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Delete Product</h4>
+        <p>Do you really want to delete this product?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="cancelDelete">Cancel</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="confirmDelete">Ok</a>
+    </div>
+</div>
+
+<script src="~/js/ProductList.js"></script>
